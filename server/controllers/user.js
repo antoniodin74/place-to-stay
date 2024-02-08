@@ -2,6 +2,8 @@ import bcrypt from "bcryptjs"
 import User from '../models/User.js';
 import jwt from "jsonwebtoken";
 import tryCatch from "./utils/tryCatch.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const register = tryCatch(async (req, res)=> {
         const {name, email, password} = req.body;

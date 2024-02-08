@@ -6,7 +6,7 @@ import useCheckToken from '../../hooks/useCheckToken'
 import Profile from './Profile'
 
 const UserMenu = ({anchorUserMenu, setAnchorUserMenu}) => {
-    //useCheckToken();
+    useCheckToken();
     const {
         dispatch,
         state: { currentUser }
@@ -26,12 +26,14 @@ const UserMenu = ({anchorUserMenu, setAnchorUserMenu}) => {
     onClose={handleCloseUserMenu}
     onClick={handleCloseUserMenu}
     >
+        {!currentUser.google &&(
         <MenuItem onClick={()=>dispatch({type:'UPDATE_PROFILE', payload:{open:true, file:null, photoURL:currentUser?.photoURL}})}>
             <ListItemIcon>
                 <Settings fontSize='small' />
             </ListItemIcon>
             Profile
         </MenuItem>
+        )}
         <MenuItem onClick={()=>dispatch({type:'UPDATE_USER', payload:null})}>
             <ListItemIcon>
                 <Logout fontSize='small' />

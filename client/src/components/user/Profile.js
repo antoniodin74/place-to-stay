@@ -2,6 +2,7 @@ import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogContentText
 import { Close, Send } from '@mui/icons-material'
 import React, { useRef } from 'react'
 import { useValue } from '../../context/ContextProvider'
+import { updateProfile } from '../../action/user'
 
 const Profile = () => {
     const {state: {profile, currentUser}, dispatch} = useValue();
@@ -22,6 +23,7 @@ const Profile = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const name = nameRef.current.value
+        updateProfile(currentUser, {name, file:profile.file}, dispatch)
     }
 
     return (

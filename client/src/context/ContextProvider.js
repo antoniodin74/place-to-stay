@@ -6,7 +6,9 @@ const initialState = {
     openLogin:false,
     alert:{ open:false, severity:'info', message:'' },
     loading:false,
-    profile: { open:false, file:null, photoURL:'' }
+    profile: { open:false, file:null, photoURL:'' },
+    images: [],
+    details: { title:'', description:'', price:0 }
 }
 
 const Context = createContext(initialState)
@@ -16,9 +18,8 @@ export const useValue = ()=>{
 }
 
 const ContextProvider = ({children}) => {
-  
   useEffect(() => {
-    const currentUser = JSON.stringify(localStorage.getItem('currentUser'))
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
     if(currentUser) {
       dispatch({type: 'UPDATE_USER', payload: currentUser});
     }
