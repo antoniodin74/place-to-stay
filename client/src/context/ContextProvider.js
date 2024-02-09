@@ -8,7 +8,8 @@ const initialState = {
     loading:false,
     profile: { open:false, file:null, photoURL:'' },
     images: [],
-    details: { title:'', description:'', price:0 }
+    details: { title:'', description:'', price:0 },
+    location: {lng:14.26859, lat:40.85303}
 }
 
 const Context = createContext(initialState)
